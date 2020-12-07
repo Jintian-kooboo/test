@@ -39,9 +39,9 @@ namespace API
                 c.SwaggerDoc("v1", new OpenApiInfo { Title = "API", Version = "v1" });
             });
 
-            var tokenConfigSession = Configuration.GetSection("tokenManagement");
-            services.Configure<TokenManagement>(tokenConfigSession);
-            var token = tokenConfigSession.Get<TokenManagement>();
+            var tokenConfigSession = Configuration.GetSection("jwtTokenDto");
+            services.Configure<JwtTokenDto>(tokenConfigSession);
+            var token = tokenConfigSession.Get<JwtTokenDto>();
 
             services.AddAuthentication(x =>
             {

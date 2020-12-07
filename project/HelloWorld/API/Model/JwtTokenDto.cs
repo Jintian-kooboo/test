@@ -5,7 +5,7 @@ using System.Threading.Tasks;
 
 namespace API.Model
 {
-    public class TokenManagement
+    public class JwtTokenDto
     {
         public string Secret { get; set; }
         public string Issuer { get; set; }

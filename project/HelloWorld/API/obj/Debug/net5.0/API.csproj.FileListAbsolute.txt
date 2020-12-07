@@ -34,3 +34,17 @@ D:\testabc\project\HelloWorld\API\obj\Debug\net5.0\API.dll
 D:\testabc\project\HelloWorld\API\obj\Debug\net5.0\ref\API.dll
 D:\testabc\project\HelloWorld\API\obj\Debug\net5.0\API.pdb
 D:\testabc\project\HelloWorld\API\obj\Debug\net5.0\API.genruntimeconfig.cache
+D:\testabc\project\HelloWorld\API\bin\Debug\net5.0\Microsoft.DotNet.PlatformAbstractions.dll
+D:\testabc\project\HelloWorld\API\bin\Debug\net5.0\Microsoft.Extensions.DependencyModel.dll
+D:\testabc\project\HelloWorld\API\bin\Debug\net5.0\Newtonsoft.Json.dll
+D:\testabc\project\HelloWorld\API\bin\Debug\net5.0\Serilog.dll
+D:\testabc\project\HelloWorld\API\bin\Debug\net5.0\Serilog.AspNetCore.dll
+D:\testabc\project\HelloWorld\API\bin\Debug\net5.0\Serilog.Extensions.Hosting.dll
+D:\testabc\project\HelloWorld\API\bin\Debug\net5.0\Serilog.Extensions.Logging.dll
+D:\testabc\project\HelloWorld\API\bin\Debug\net5.0\Serilog.Formatting.Compact.dll
+D:\testabc\project\HelloWorld\API\bin\Debug\net5.0\Serilog.Settings.Configuration.dll
+D:\testabc\project\HelloWorld\API\bin\Debug\net5.0\Serilog.Sinks.Async.dll
+D:\testabc\project\HelloWorld\API\bin\Debug\net5.0\Serilog.Sinks.Console.dll
+D:\testabc\project\HelloWorld\API\bin\Debug\net5.0\Serilog.Sinks.Debug.dll
+D:\testabc\project\HelloWorld\API\bin\Debug\net5.0\Serilog.Sinks.File.dll
+D:\testabc\project\HelloWorld\API\obj\Debug\net5.0\API.csprojAssemblyReference.cache

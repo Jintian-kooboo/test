@@ -29,6 +29,11 @@ namespace API.Controllers
         public IEnumerable<WeatherForecast> Get()
         {
             var rng = new Random();
+
+  
+            _logger.LogInformation("Called Get method WeatherForecastController");
+            _logger.LogError("error");
+
             return Enumerable.Range(1, 5).Select(index => new WeatherForecast
             {
                 Date = DateTime.Now.AddDays(index),

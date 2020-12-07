@@ -15,11 +15,11 @@ namespace API.Service
     public class TokenAuthenticationService : IAuthenticateService
     {
         private readonly IUserService _userService;
-        private readonly TokenManagement _tokenManagement;
-        public TokenAuthenticationService(IUserService userService, IOptions<TokenManagement> tokenManagement)
+        private readonly JwtTokenDto _jwtTokenDto;
+        public TokenAuthenticationService(IUserService userService, IOptions<JwtTokenDto> jwtTokenDto)
         {
             _userService = userService;
-            _tokenManagement = tokenManagement.Value;
+            _jwtTokenDto = jwtTokenDto.Value;
         }
         public bool IsAuthenticated(LoginRequestDTO request, out string token)
         {
@@ -30,9 +30,9 @@ namespace API.Service
             {
                 new Claim(ClaimTypes.Name,request.Username)
             };
-            var key = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(_tokenManagement.Secret));
+            var key = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(_jwtTokenDto.Secret));
             var credentials = new SigningCredentials(key, SecurityAlgorithms.HmacSha256);
-            var jwtToken = new JwtSecurityToken(_tokenManagement.Issuer, _tokenManagement.Audience, claims, expires: DateTime.Now.AddMinutes(_tokenManagement.AccessExpiration), signingCredentials: credentials);
+            var jwtToken = new JwtSecurityToken(_jwtTokenDto.Issuer, _jwtTokenDto.Audience, claims, expires: DateTime.Now.AddMinutes(_jwtTokenDto.AccessExpiration), signingCredentials: credentials);
 
             token = new JwtSecurityTokenHandler().WriteToken(jwtToken);
 
