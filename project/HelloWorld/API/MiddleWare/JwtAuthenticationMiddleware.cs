@@ -1,4 +1,6 @@
-﻿using Microsoft.AspNetCore.Http;
+﻿using API.Model;
+using Microsoft.AspNetCore.Http;
+using Microsoft.Extensions.Options;
 using Microsoft.IdentityModel.Tokens;
 using System;
 using System.Collections.Generic;
@@ -10,14 +12,18 @@ using System.Threading.Tasks;
 
 namespace API.MiddleWare
 {
+    //https://jasonwatmore.com/post/2019/10/11/aspnet-core-3-jwt-authentication-tutorial-with-example-api
+    //https://github.com/cornflourblue/aspnet-core-3-jwt-authentication-api
     public class JwtAuthenticationMiddleware
     {
         private readonly RequestDelegate _next;
+        private readonly JwtTokenDto _jwtTokenDto;
 
         // Dependency Injection
-        public JwtAuthenticationMiddleware(RequestDelegate next)
+        public JwtAuthenticationMiddleware(RequestDelegate next, IOptions<JwtTokenDto> jwtTokenDto)
         {
             _next = next;
+            _jwtTokenDto = jwtTokenDto.Value;
         }
 
         //public async Task Invoke(HttpContext context)
@@ -73,7 +79,7 @@ namespace API.MiddleWare
             try
             {
                 var tokenHandler = new JwtSecurityTokenHandler();
-                var key = "";// Encoding.UTF8.GetBytes(_appSettings.Secret);
+                var key = Encoding.UTF8.GetBytes(_jwtTokenDto.Secret);
                 tokenHandler.ValidateToken(token, new TokenValidationParameters
                 {
                     ValidateIssuerSigningKey = true,

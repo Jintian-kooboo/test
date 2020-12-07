@@ -6,21 +6,22 @@ using System.Linq;
 using System.Security.Claims;
 using System.Threading.Tasks;
 
-namespace API.Custom
+namespace API.Helper
 {
-    public class ClaimRequirementAttribute : TypeFilterAttribute
+    //[AttributeUsage(AttributeTargets.Class | AttributeTargets.Method)]
+    public class CustomAuthorizeAttribute : TypeFilterAttribute
     {
-        public ClaimRequirementAttribute(string claimType, string claimValue) : base(typeof(ClaimRequirementFilter))
+        public CustomAuthorizeAttribute(string claimType, string claimValue) : base(typeof(CustomAuthorizeFilter))
         {
             Arguments = new object[] { new Claim(claimType, claimValue) };
         }
     }
 
-    public class ClaimRequirementFilter : IAuthorizationFilter
+    public class CustomAuthorizeFilter : IAuthorizationFilter
     {
         readonly Claim _claim;
 
-        public ClaimRequirementFilter(Claim claim)
+        public CustomAuthorizeFilter(Claim claim)
         {
             _claim = claim;
         }
@@ -41,6 +42,9 @@ namespace API.Custom
             //    // not logged in
             //    context.Result = new JsonResult(new { message = "Unauthorized" }) { StatusCode = StatusCodes.Status401Unauthorized };
             //}
+
+            //await context.HttpContext.Response.WriteAsync($"Status Code: {context.HttpContext.Response.StatusCode}");
+            //context.HttpContext.Response.Redirect($"/error?code={context.HttpContext.Response.StatusCode}");
         }
 
 

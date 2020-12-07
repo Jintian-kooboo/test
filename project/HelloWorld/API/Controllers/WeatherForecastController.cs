@@ -1,4 +1,4 @@
-﻿using API.Custom;
+﻿using API.Helper;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
@@ -45,7 +45,7 @@ namespace API.Controllers
         }
 
 
-        [ClaimRequirement("MyClaimTypes.Permission", "CanReadResource")]
+        [CustomAuthorize("MyClaimTypes.Permission", "CanReadResource")]
         [HttpGet]
         public IActionResult GetResource()
         {
