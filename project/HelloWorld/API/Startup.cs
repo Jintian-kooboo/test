@@ -1,4 +1,5 @@
 using API.Interface;
+using API.MiddleWare;
 using API.Model;
 using API.Service;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
@@ -66,6 +67,7 @@ namespace API
             services.AddScoped<IAuthenticateService, TokenAuthenticationService>();
             services.AddScoped<IUserService, UserService>();
 
+
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -89,6 +91,8 @@ namespace API
             {
                 endpoints.MapControllers();
             });
+
+            app.UseMiddleware<JwtAuthenticationMiddleware>();
         }
     }
 }

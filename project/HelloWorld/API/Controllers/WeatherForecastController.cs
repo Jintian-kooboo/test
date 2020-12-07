@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Authorization;
+﻿using API.Custom;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
 using System;
@@ -41,6 +42,14 @@ namespace API.Controllers
                 Summary = Summaries[rng.Next(Summaries.Length)]
             })
             .ToArray();
+        }
+
+
+        [ClaimRequirement("MyClaimTypes.Permission", "CanReadResource")]
+        [HttpGet]
+        public IActionResult GetResource()
+        {
+            return Ok();
         }
     }
 }
