@@ -1,2 +1,0 @@
-2020-12-07 15:08:44.643 +08:00 [INF] Called Get method WeatherForecastController
-2020-12-07 15:08:44.701 +08:00 [ERR] error
